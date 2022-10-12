@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Encriptador🔍</title>
+    <link href="estilos.css" rel="stylesheet" type="text/css">
+</head>
+<body style = "position: fixed;
+      width: 1440px;
+      height: 1024px;
+
+/* Light blue/light-blue-100 */
+
+      background: #F3F5FC; ">
+
+<textarea class="areaTexto" id="input" placeholder="Ingrese el texto aqui"></textarea>
+
+
+<p class="advertencia"> ❗ solo letras minusculas y sin acentos</p>
+<div class="botones">
+
+        <button id="encriptar" class  ="encriptar"><span style="/* Button */
+
+
+    width: 280px;
+    height: 19px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: center;
+
+    /* White */
+
+    color: #FFFFFF;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 1;">
+            Encriptar
+        </span>
+        </button>
+        <button id="desencriptar"  class="desencriptar"> <span style="/* Button */
+
+
+    width: 280px;
+    height: 19px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: center;
+
+    /* Dark blue/dark-blue-300 */
+
+    color: #0A3871;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 1;">
+            Desencriptar
+        </span></button>
+</div>
+
+
+
+
+
+<div id="rectanguloMensaje" class="rectangulo1">
+    <textarea id="output" class="output" readonly = "readonly" ></textarea>
+    <button class="botonCopiar" id="copiar">copiar</button>
+</div>
+
+
+<div id="rectanguloSinMensaje" class="rectangulo1"  >
+
+    <img src="muneco.svg" class="muneco">
+
+    <p  class = "ningunMensaje"><br>Ningun mensaje fue encontrado</p>
+    <p class="ingresaTexto">Ingresa texto que desees encriptar o desencriptar.</p>
+
+</div>
+
+
+
+    <script>
+
+        var input = document.querySelector("textarea#input");
+
+        var encriptarBoton = document.querySelector("button#encriptar");
+        var desencriptarBoton = document.querySelector("button#desencriptar");
+        var output = document.querySelector("textarea#output")
+
+        var copiarBoton = document.querySelector("button#copiar")
+
+        desencriptarBoton.onclick = desencriptar;
+        encriptarBoton.onclick = encriptar;
+        copiarBoton.onclick = copiar;
+
+        input.onfocus = function (){
+            if (this.value == "Ingrese el texto aquí"){
+                this.value = "";
+            }
+
+        }
+
+        function encriptar(){
+
+            var cadena = input.value;
+
+            document.getElementById("rectanguloSinMensaje").style.display = "none"
+
+
+            var nuevoTexto = cadena.replace(/e/gi, "enter").replace(/i/gi, "imes")
+                .replace(/a/gi, "ai").replace(/o/gi, "ober").replace(/u/gi, "ufat");
+
+
+            output.textContent = nuevoTexto;
+
+
+        }
+
+        function desencriptar(){
+
+            document.getElementById("rectanguloSinMensaje").style.display = "none"
+            var cadena = input.value;
+            var nuevoTexto = cadena.replace(/enter/g,"e" ).replace(/imes/g, "i")
+                .replace(/ai/g, "a").replace(/ober/g, "o").replace(/ufat/g, "u");
+
+
+            output.textContent = nuevoTexto;
+        }
+
+        function copiar(){
+
+            var texto = document.getElementById("output");
+
+            texto.select();
+            document.execCommand("copy");
+        }
+
+
+
+    </script>
+
+</body>
+</html>
